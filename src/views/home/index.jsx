@@ -13,15 +13,15 @@ const home = memo(() => {
     })
   }, [])
   return (
-    <div>
-      <h2>{highScore.title}</h2>
+    <div><h2>HomePage</h2>
+      {/* <h2>{highScore.title}</h2>
       <h4>{highScore.subtitle}</h4>
       <ul>
         {highScore.list?.map(item => {
           return <li key={item.id}>{item.name}</li>
         })}
       </ul>
- 
+  */}
     </div>
   )
 })
