@@ -4,7 +4,7 @@ import HomeBanner from '@/components/home-banner'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { fetchHomeAction } from '@/store/modules/home'
 import SectionHeader from '@/components/selection-header'
-import RoomItem from '@/components/room-items'
+import SectionRooms from '@/components/section-rooms'
 
 const Home = memo(() => {
   // 取数据
@@ -23,13 +23,7 @@ const Home = memo(() => {
         <div className='content'>
          <div className='good-price'>
          <SectionHeader title={goodPriceInfo.title} />
-          <ul className='room-list'>
-            {
-              goodPriceInfo.list?.slice(0,8)?.map(item => {
-                return <RoomItem itemData={item} key={item.id} />
-              })
-            }
-          </ul>
+         <SectionRooms roomList={goodPriceInfo.list} />
         </div>
         </div>
     </HomeWrapper>
