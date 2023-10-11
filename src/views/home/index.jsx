@@ -1,29 +1,15 @@
-import React, { memo, useEffect, useState } from 'react'
-import hyRequest from "@/services";
- 
-const home = memo(() => {
- 
-  const [highScore, setHighScore] = useState({})
- 
-  useEffect(() => {
-    hyRequest.get({ url: "/home/highscore" }).then(res => {
-      setHighScore(res)
-      console.log(res);
- 
-    })
-  }, [])
+import React, { memo } from 'react'
+import { HomeWrapper } from './style'
+import HomeBanner from '@/components/home-banner'
+
+const Home = memo(() => {
   return (
-    <div><h2>HomePage</h2>
-      {/* <h2>{highScore.title}</h2>
-      <h4>{highScore.subtitle}</h4>
-      <ul>
-        {highScore.list?.map(item => {
-          return <li key={item.id}>{item.name}</li>
-        })}
-      </ul>
-  */}
-    </div>
+    <HomeWrapper>
+      <HomeBanner>
+        
+      </HomeBanner>
+    </HomeWrapper>
   )
 })
- 
-export default home 
+
+export default Home
