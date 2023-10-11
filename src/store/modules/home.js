@@ -1,28 +1,45 @@
-import { getHomeGoodPriceData } from "@/services/modules/home";
+import { getHomeGoodPriceData, getHomeHighScoreData } from "@/services/modules/home";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const fetchHomeAction = createAsyncThunk("fetchdata",async () => {
-    const res = await getHomeGoodPriceData()
-    return res
+// 获取主页数据
+export const fetchHomeAction = createAsyncThunk("fetchdata", (payload, { dispatch }) => {
+    // 好价
+    getHomeGoodPriceData().then(res => {
+        // 更新
+        dispatch(changeGoodPriceInfoAction(res))
+    })
+
+    // 高分
+    getHomeHighScoreData().then(res => {
+        // 更新
+        dispatch(changeHighScoreInfoAction(res))
+    })
 })
 
-const homeSilce = createSlice({
+// 创建Redux Slice
+const homeSlice = createSlice({
     name: "home",
     initialState: {
-        goodPriceInfo: {}
+        goodPriceInfo: {},   // 好价
+        highScoreInfo: {}    // 高分
     },
     reducers: {
+        // 好价
         changeGoodPriceInfoAction(state, { payload }){
-            state.goodPriceInfo = payload
+            state.goodPriceInfo = payload;
+        },
+        // 高分
+        changeHighScoreInfoAction(state, { payload }){
+            state.highScoreInfo = payload;
         }
     },
-    // 处理异步操作
     extraReducers: {
-        [fetchHomeAction.fulfilled](state, { payload }) {
-            // console.log(payload)
-            state.goodPriceInfo = payload
-        }
+        // [fetchHomeAction.fulfilled](state, { payload }) {
+        //     // console.log(payload)
+        //     state.goodPriceInfo = payload
+        // }
     }
 })
-export const { changeGoodPriceInfoAction } = homeSilce.actions
-export default homeSilce.reducer
+
+export const { changeGoodPriceInfoAction, changeHighScoreInfoAction } = homeSlice.actions;
+export default homeSlice.reducer;
