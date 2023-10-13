@@ -1,70 +1,25 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+以下是关于计算滚动视图的思路：
 
-## Available Scripts
+● 记录索引: posIndex
+● newIndex = posIndex + 1
+● 根据newIndex索引获取到子元素 children[newIndex]
+● newEl.offsetLeft 
+  ○ 注意事项: 设置定位
+● 修改scrollContentRef.current.style.transform = translate(xx)
+● 设置最新的索引
+● 判断右边按钮是否显示
+● 判断左边按钮是否显示
 
-In the project directory, you can run:
+1. **初始化状态和引用**：首先，使用`useState`来初始化状态变量，以便在组件中管理一些状态。使用`useRef`来创建引用，以便访问DOM元素。
 
-### `npm start`
+2. **右侧按钮点击事件处理**：当点击右侧按钮时，内容向右滚动。需要计算新的偏移量(`newOffsetLeft`)，这是下一个要滚动到的内容块的`offsetLeft`属性。然后，使用CSS `transform`属性将内容向左平移，以实现滚动效果。最后，我们更新当前位置索引(`posIndex`)和右侧按钮的显示状态(`showRight`)。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3. **计算总滚动距离**：在`useEffect`中，计算了整个可滚动的宽度(`scrollWidth`)以及容器自身的宽度(`clientWidth`)。通过将这两个值相减，得到了总的可滚动距离(`totalDistance`)。然后，将这个值存储在引用(`totalDistanceRef`)中。
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+4. **右侧按钮的显示状态**：在`useEffect`中，还根据总滚动距离(`totalDistance`)来设置右侧按钮的显示状态(`showRight`)。如果总滚动距离大于0，说明内容可以向右滚动，因此右侧按钮应该显示。
 
-### `npm test`
+5. **渲染组件**：最后，渲染滚动视图组件，包括左侧按钮、右侧按钮（如果`showRight`为`true`），以及包含内容的滚动容器。这个容器使用`ref`属性来引用，并在其中渲染`props.children`，这样传递给组件的任何子元素都会显示在滚动容器中。
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
