@@ -3,10 +3,10 @@ import React, { memo } from 'react'
 import { ItemWrapper } from './style'
 import { Rating } from '@material-ui/core'
 const RoomItem = memo((props) => {
-  const { itemData, itemWidth = "25%" } = props
+  const { itemData, itemwidth = "25%" } = props
   // console.log(itemData)
   return (
-    <ItemWrapper itemWidth={itemWidth}>
+    <ItemWrapper itemwidth={itemwidth}>
       <div className='room-item'>
         {/* 封面 */}
         <div className='cover'>
