@@ -4,11 +4,13 @@ import { HomeWrapperV2 } from './style'
 import SectionHeader from '@/components/selection-header'
 import SectionTabs from '@/components/section-tabs'
 import SectionRooms from '@/components/section-rooms'
+import SectionFooter from '@/components/section-footer'
 
 const HomeSectionV2 = memo((props) => {
     const { infoData } = props
-    const [name, setName] = useState("佛山") 
-
+    const initName = Object.keys(infoData.dest_list)[0]
+    const [name, setName] = useState(initName) 
+    
     // tab
     const tabNames = infoData.dest_address?.map(item => item.name)
     // 点击Tab切换城市数据
@@ -19,11 +21,10 @@ const HomeSectionV2 = memo((props) => {
   
   return (
    <HomeWrapperV2>
-    <div className='discount'>
             <SectionHeader title={infoData.title} subtitle={infoData.subtitle} />
             <SectionTabs tabNames={tabNames} tabClick={tabClickHanle}/>
             <SectionRooms roomList={infoData.dest_list?.[name]} itemwidth="33.33%" />
-          </div>
+            <SectionFooter name={name}/>
    </HomeWrapperV2>
   )
 })
