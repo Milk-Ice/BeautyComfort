@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { memo, useCallback, useState } from 'react'
-import { HomeWrapper } from './style'
+import { HomeWrapperV2 } from './style'
 import SectionHeader from '@/components/selection-header'
 import SectionTabs from '@/components/section-tabs'
 import SectionRooms from '@/components/section-rooms'
@@ -18,13 +18,13 @@ const HomeSectionV2 = memo((props) => {
     
   
   return (
-   <HomeWrapper>
+   <HomeWrapperV2>
     <div className='discount'>
             <SectionHeader title={infoData.title} subtitle={infoData.subtitle} />
             <SectionTabs tabNames={tabNames} tabClick={tabClickHanle}/>
             <SectionRooms roomList={infoData.dest_list?.[name]} itemwidth="33.33%" />
           </div>
-   </HomeWrapper>
+   </HomeWrapperV2>
   )
 })
 

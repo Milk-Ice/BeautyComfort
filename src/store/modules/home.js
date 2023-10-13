@@ -1,4 +1,4 @@
-import { getHomeGoodPriceData, getHomeHighScoreData, getHomeDiscountData } from "@/services/modules/home";
+import { getHomeGoodPriceData, getHomeHighScoreData, getHomeDiscountData, getHomeHotRecommandData } from "@/services/modules/home";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 // 获取主页数据
@@ -18,6 +18,9 @@ export const fetchHomeAction = createAsyncThunk("fetchdata", (payload, { dispatc
     getHomeDiscountData().then(res =>{
         dispatch(changeDiscountInfoAction(res))
     })
+    getHomeHotRecommandData().then(res => {
+        dispatch(changeHomHotRecommandAction(res))
+    })
 })
 
 // 创建Redux Slice
@@ -27,6 +30,7 @@ const homeSlice = createSlice({
         goodPriceInfo: {},   // 好价
         highScoreInfo: {},    // 高分
         discountInfo: {},  //折扣
+        hotRecommendInfo: {}, 
     },
     reducers: {
         // 好价
@@ -39,6 +43,9 @@ const homeSlice = createSlice({
         },
         changeDiscountInfoAction(state, { payload }) {
             state.discountInfo = payload;
+        },
+        changeHomHotRecommandAction(state, { payload }) {
+            state.hotRecommendInfo = payload;
         }
     },
     extraReducers: {
@@ -49,5 +56,5 @@ const homeSlice = createSlice({
     }
 })
 
-export const { changeGoodPriceInfoAction, changeHighScoreInfoAction, changeDiscountInfoAction } = homeSlice.actions;
+export const { changeGoodPriceInfoAction, changeHighScoreInfoAction, changeDiscountInfoAction, changeHomHotRecommandAction } = homeSlice.actions;
 export default homeSlice.reducer;

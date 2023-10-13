@@ -9,10 +9,11 @@ import HomeSectionV2 from './c-cpns/home-section-v2'
 import { isEmptyObject } from '@/utils/is_empty_object'
 const Home = memo(() => {
   // 取数据
-  const { goodPriceInfo, highScoreInfo, discountInfo } = useSelector((state) => ({
+  const { goodPriceInfo, highScoreInfo, discountInfo, hotRecommendInfo } = useSelector((state) => ({
     goodPriceInfo: state.home.goodPriceInfo,
     highScoreInfo: state.home.highScoreInfo,
     discountInfo: state.home.discountInfo,
+    hotRecommendInfo: state.home.hotRecommendInfo
   }),shallowEqual)
 
   // 派发异步事件
@@ -25,9 +26,10 @@ const Home = memo(() => {
     <HomeWrapper>
       <HomeBanner />
         <div className='content'>
-         {isEmptyObject(discountInfo) &&  <HomeSectionV2 infoData={discountInfo} />}
-         {isEmptyObject(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo} />}
-         {isEmptyObject(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo} />}
+         {isEmptyObject(discountInfo) &&  <HomeSectionV2 infoData={ discountInfo } />}
+         {isEmptyObject(hotRecommendInfo) &&  <HomeSectionV2 infoData={ hotRecommendInfo } />}
+         {isEmptyObject(goodPriceInfo) && <HomeSectionV1 infoData={ goodPriceInfo } />}
+         {isEmptyObject(highScoreInfo) && <HomeSectionV1 infoData={ highScoreInfo } />}
         </div>
     </HomeWrapper>
   )

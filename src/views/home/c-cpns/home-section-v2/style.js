@@ -1,4 +1,4 @@
 import styled from "styled-components";
 
-export const HomeWrapper = styled.div`
+export const HomeWrapperV2 = styled.div`
 margin-top: 30px;`
