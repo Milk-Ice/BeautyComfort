@@ -7,13 +7,15 @@ import HomeBanner from '@/views/home/c-cpns/home-banner'
 import HomeSectionV1 from './c-cpns/home-section-v1/index'
 import HomeSectionV2 from './c-cpns/home-section-v2'
 import { isEmptyObject } from '@/utils/is_empty_object'
+import HomelongFor from './c-cpns/home-longfor'
 const Home = memo(() => {
   // 取数据
-  const { goodPriceInfo, highScoreInfo, discountInfo, hotRecommendInfo } = useSelector((state) => ({
+  const { goodPriceInfo, highScoreInfo, discountInfo, hotRecommendInfo, longforInfo } = useSelector((state) => ({
     goodPriceInfo: state.home.goodPriceInfo,
     highScoreInfo: state.home.highScoreInfo,
     discountInfo: state.home.discountInfo,
-    hotRecommendInfo: state.home.hotRecommendInfo
+    hotRecommendInfo: state.home.hotRecommendInfo,
+    longforInfo: state.home.longforInfo
   }),shallowEqual)
 
   // 派发异步事件
@@ -28,6 +30,9 @@ const Home = memo(() => {
         <div className='content'>
          {isEmptyObject(discountInfo) &&  <HomeSectionV2 infoData={ discountInfo } />}
          {isEmptyObject(hotRecommendInfo) &&  <HomeSectionV2 infoData={ hotRecommendInfo } />}
+
+          {isEmptyObject(longforInfo) && <HomelongFor infoData={ longforInfo } />}
+
          {isEmptyObject(goodPriceInfo) && <HomeSectionV1 infoData={ goodPriceInfo } />}
          {isEmptyObject(highScoreInfo) && <HomeSectionV1 infoData={ highScoreInfo } />}
         </div>
