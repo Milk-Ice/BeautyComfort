@@ -14,16 +14,23 @@ export const changeTotalCountAction = (totalCount) => ({
     type: actionTypes.CHANGE_TOTAL_COUNT,
     totalCount
 })
+export const changeIsLoadingAction = (isLoading) => ({
+    type: actionTypes.CHANGE_IS_LOADING,
+    isLoading
+})
+
 
 export const fectchRoomListAction = (page) => {
     return async (dispatch, getState) => {
         // 修改currentPage
         dispatch(changeCurrentPageAction(page))
+        dispatch(changeIsLoadingAction(true))
         // 根据页码获取最新的数据
         const currentPage = getState().entire.currentPage
         // console.log(currentPage)
         const res = await getEntireRoomList(currentPage*20)
-        console.log(currentPage)
+        dispatch(changeIsLoadingAction(false))
+        // console.log(currentPage)
         // 获取到最新的数据存在redux的store中
         const roomList = res.list
         const totalCount = res.totalCount
