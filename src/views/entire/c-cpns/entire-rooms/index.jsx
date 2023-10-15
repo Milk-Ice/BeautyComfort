@@ -5,6 +5,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { RoomsWrapper } from './style'
 import RoomItem from '@/components/room-items'
 import { useNavigate } from 'react-router-dom'
+import { changeDetailAction } from '@/store/modules/detail'
 
 const EntireRooms = memo(() => {
   /** 从redux中获取roomList数据 */
@@ -17,9 +18,13 @@ const EntireRooms = memo(() => {
   /** 事件处理 */
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
+
   const itemClickHandle = useCallback((item) => {
     // dispatch(changeDetailInfoAction(item))
+    dispatch(changeDetailAction(item))
     navigate("/detail")
+    // console.log(item)
   }, [navigate, dispatch])
 
   return (
