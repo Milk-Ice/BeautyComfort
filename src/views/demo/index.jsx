@@ -12,7 +12,7 @@ const Demo = memo((props) => {
         if(newIndex > names.lengh - 1) newIndex = 0
         if(newIndex < 0) newIndex = names.length -1
         setSelectIndex(newIndex)
-        console.log(newIndex)
+        // console.log(newIndex)
     }
     return (
         <DemoWrapper>
