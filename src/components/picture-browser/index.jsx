@@ -5,22 +5,32 @@ import IconPictureClose from '@/assets/css/svg/icon_pictureClose'
 import IconArrowLeft from '@/assets/css/svg/icon_ArrowLeft'
 import IconArrowRight from '@/assets/css/svg/icon_ArrowRight'
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
-import { StyleSheetManager } from 'styled-components'
+import IconArrowDown from '@/assets/css/svg/icon_ArrowDown'
+import Indicator from '@/base-ui/indicator'
+import classNames from 'classnames'
+import IconArrowUp from '@/assets/css/svg/icon_ArrowUp'
 
 const PictureBrowser = memo((props) => {
   const { pictureUrls, closeClick } = props
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isNext, setisNext] = useState(true)
+  const [isNext, setIsNext] = useState(true)
+  const [showList, setShowList] = useState(true)
+  
   useEffect(() => {
     document.body.style.overflow = "hidden"
     return () => {
       document.body.style.overflow = "auto"
     }
   }, [])
+  function bottomItemClickHandle(index) {
+    setIsNext(index > currentIndex)
+    setCurrentIndex(index)
+  }
   // 点击关闭
   function closeBtnClickHandle() {
     if (closeClick) closeClick()
   }
+// console.log(currentIndex)
   // 点击下一个、上一个切换照片
   function controlClickHandle(isNext = true) {
     let newIndex = isNext ? currentIndex + 1 : currentIndex - 1
@@ -28,11 +38,11 @@ const PictureBrowser = memo((props) => {
     if (newIndex > pictureUrls.length - 1) newIndex = 0
 
     setCurrentIndex(newIndex)
-    setisNext(isNext)
+    setIsNext(isNext)
   }
   // console.log(currentIndex, isNext)
   return (
-    <BrowserWrapper isNext={isNext}>
+    <BrowserWrapper isNext={isNext} showList={showList}>
     <div className='top'>
       <div className='close-btn' onClick={closeBtnClickHandle}>
         <IconPictureClose/>
@@ -60,17 +70,36 @@ const PictureBrowser = memo((props) => {
       </div>
     </div>
     <div className='preview'>
-      <div className='info'>
-        <div className='desc'>
-          <div className='count'>
-            <span>{currentIndex+1}/{pictureUrls.length}:</span>
-            <span>room apartment图片{currentIndex+1}</span>
+        <div className='info'>
+          <div className='desc'>
+            <div className='count'>
+              <span>{currentIndex+1}/{pictureUrls.length}:</span>
+              <span>room apartment图片{currentIndex+1}</span>
+            </div>
+            <div className='toggle' onClick={e => setShowList(!showList)}>
+              <span>{showList ? "隐藏": "显示"}照片列表</span>
+              { showList? <IconArrowDown/>: <IconArrowUp/> }
+            </div>
+          </div>
+          <div className='list'>
+            <Indicator selectIndex={currentIndex}>
+              {
+                pictureUrls.map((item, index) => {
+                  return (
+                    <div 
+                      className={classNames("item", { active: currentIndex === index })}
+                      key={item}
+                      onClick={e => bottomItemClickHandle(index)}
+                    >
+                      <img src={item} alt="" />
+                    </div>
+                  )
+                })
+              }
+            </Indicator>
           </div>
         </div>
-        <div className='list'>
-        </div>
       </div>
-    </div>
   </BrowserWrapper>
   )
 })
