@@ -1,13 +1,15 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect } from 'react'
 import { DetailWrapper } from './style'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import DetaiInfos from './c-cpns/detail-infos'
 import DetailPicture from './c-cpns/detail-pictures'
+import { changeHeaderConfigAction } from '@/store/modules/main'
 
 const Details = memo(() => {
-  const { detailInfo } = useSelector((state) => ({
-    detailInfo: state.detail.detailInfo
-  }))
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(changeHeaderConfigAction({isFixed: false}))
+  },[dispatch])
   return (
     <DetailWrapper>
       
