@@ -14,7 +14,6 @@ import theme from './assets/css/svg/theme';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
-
   <Provider store={store}>
     <Suspense fallback="loading ...">
       <ThemeProvider theme={theme}>
@@ -24,7 +23,6 @@ root.render(
       </ThemeProvider>
     </Suspense>
   </Provider>
-
   // </React.StrictMode>
 );
 
