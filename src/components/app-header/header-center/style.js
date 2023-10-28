@@ -17,5 +17,16 @@ export const HeaderCenterWrapper = styled.div`
         font-weight: bold;
     }
 }
+.search-details{
+    position: relative;
+    transform-origin: 50%;
+    will-change: transform, opacity;
+    .infos {
+        position: absolute;
+        top: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
     
 `

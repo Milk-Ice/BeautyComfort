@@ -36,3 +36,7 @@ export const HeaderWrapper = styled.div`
     }
    
 `
+export const SearchAreaArapper = styled.div`
+    height: ${props => props.isSearch ? "100px" : "0"};
+    transform: height 250ms ease;
+`
