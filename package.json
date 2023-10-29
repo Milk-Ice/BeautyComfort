@@ -25,6 +25,9 @@
     "styled-components": "^6.0.8",
     "web-vitals": "^2.1.4"
   },
+  "overrides": {
+    "react": "$react"
+  },
   "scripts": {
     "start": "craco start",
     "build": "craco build",
