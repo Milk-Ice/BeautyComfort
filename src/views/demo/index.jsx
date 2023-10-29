@@ -1,5 +1,4 @@
 import Indicator from '@/base-ui/indicator'
-import PropTypes from 'prop-types'
 import React, { memo, useEffect, useState } from 'react'
 import { DemoWrapper } from './style'
 import { useDispatch } from 'react-redux'
@@ -7,15 +6,15 @@ import { changeHeaderConfigAction } from '@/store/modules/main'
 
 const Demo = memo((props) => {
     const names = ["abc", "cba", "nba", "ccd", "zzz", "esx"]
-    const [selectionIndex, setSelectIndex ] = useState(0)
+    const [selectionIndex, setSelectIndex] = useState(0)
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(changeHeaderConfigAction({ idFixed: false}))
+        dispatch(changeHeaderConfigAction({ idFixed: false }))
     })
     function toggleClickHandle(isNext = true) {
-        let newIndex = isNext ? selectionIndex + 1: selectionIndex -1
-        if(newIndex > names.lengh - 1) newIndex = 0
-        if(newIndex < 0) newIndex = names.length -1
+        let newIndex = isNext ? selectionIndex + 1 : selectionIndex - 1
+        if (newIndex > names.lengh - 1) newIndex = 0
+        if (newIndex < 0) newIndex = names.length - 1
         setSelectIndex(newIndex)
         // console.log(newIndex)
     }

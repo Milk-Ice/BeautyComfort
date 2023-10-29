@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React, { memo, useEffect, useRef, useState } from 'react'
 import { ViewWrapper } from './style'
 
@@ -14,7 +13,7 @@ const ScrollView = memo((props) => {
 
     // 右侧按钮点击事件处理函数
     const controlClickHanle = function (isRight) {
-        const newIndex = isRight? posIndex + 1 : posIndex - 1;
+        const newIndex = isRight ? posIndex + 1 : posIndex - 1;
         const newEl = scrollContentRef.current.children[newIndex];
         const newOffsetLeft = newEl.offsetLeft;
 
@@ -44,8 +43,8 @@ const ScrollView = memo((props) => {
 
     return (
         <ViewWrapper>
-           {showLeft && <div className='control left' onClick={e => controlClickHanle(false)}><IconArrowLeft /></div>}
-            {showRight && <div className='control right'  onClick={e => controlClickHanle(true)}><IconArrowRight /></div>}
+            {showLeft && <div className='control left' onClick={e => controlClickHanle(false)}><IconArrowLeft /></div>}
+            {showRight && <div className='control right' onClick={e => controlClickHanle(true)}><IconArrowRight /></div>}
 
             <div className='scroll'>
                 <div className='scroll-content' ref={scrollContentRef}>

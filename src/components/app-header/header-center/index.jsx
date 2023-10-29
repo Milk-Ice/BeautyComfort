@@ -5,13 +5,13 @@ import SearchTabs from './c-cpns/search-tabs'
 import SearchSections from './c-cpns/search-sections'
 const HeaderCenter = memo((props) => {
   const titles = SearchTitles?.map(item => item.title)
-  const { isSearch, searchBarClick } = props
+  const { searchBarClick } = props
   // console.log(SearchTitles.title)
   const [tabIndex, setTabIndex] = useState()
   function searchBarClickHandle() {
     if (searchBarClick) searchBarClick()
-
   }
+  console.log(searchBarClickHandle)
   return (
     <HeaderCenterWrapper>
       {/* <div className='search-bar'>

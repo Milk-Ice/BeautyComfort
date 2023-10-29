@@ -7,7 +7,7 @@ import { shallowEqual, useSelector } from 'react-redux'
 import classNames from 'classnames'
 
 const AppHeader = memo(() => {
-  const [isSearch, setIsSearch] = useState(true)
+  const [isSearch] = useState(true)
   const { headerConfig } = useSelector((state) => ({
     headerConfig: state.main.headerConfig
   }), shallowEqual)
