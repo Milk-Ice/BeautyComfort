@@ -10,7 +10,6 @@ import "./assets/css/index.css"
 import store from './store';
 import { ThemeProvider } from 'styled-components';
 import theme from './assets/css/svg/theme';
-import { Ref } from 'react';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
