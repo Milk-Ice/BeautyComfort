@@ -1,4 +1,4 @@
 import MYrequest from './request/index'
 
 export default MYrequest
-export * from "./modules/home"
+export * from './modules/home'

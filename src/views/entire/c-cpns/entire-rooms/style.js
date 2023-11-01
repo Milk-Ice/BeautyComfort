@@ -1,5 +1,4 @@
-import styled from "styled-components";
-
+import styled from 'styled-components'
 
 export const RoomsWrapper = styled.div`
   position: relative;
@@ -23,6 +22,6 @@ export const RoomsWrapper = styled.div`
     right: 0;
     top: 0;
     bottom: 0;
-    background-color: rgba(255,255,255,.8);
+    background-color: rgba(255, 255, 255, 0.8);
   }
 `

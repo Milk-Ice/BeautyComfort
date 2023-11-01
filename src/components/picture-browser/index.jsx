@@ -15,11 +15,11 @@ const PictureBrowser = memo((props) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isNext, setIsNext] = useState(true)
   const [showList, setShowList] = useState(true)
-  
+
   useEffect(() => {
-    document.body.style.overflow = "hidden"
+    document.body.style.overflow = 'hidden'
     return () => {
-      document.body.style.overflow = "auto"
+      document.body.style.overflow = 'auto'
     }
   }, [])
   function bottomItemClickHandle(index) {
@@ -30,7 +30,7 @@ const PictureBrowser = memo((props) => {
   function closeBtnClickHandle() {
     if (closeClick) closeClick()
   }
-// console.log(currentIndex)
+  // console.log(currentIndex)
   // 点击下一个、上一个切换照片
   function controlClickHandle(isNext = true) {
     let newIndex = isNext ? currentIndex + 1 : currentIndex - 1
@@ -43,71 +43,73 @@ const PictureBrowser = memo((props) => {
   // console.log(currentIndex, isNext)
   return (
     <BrowserWrapper isNext={isNext} showList={showList}>
-    <div className='top'>
-      <div className='close-btn' onClick={closeBtnClickHandle}>
-        <IconPictureClose/>
-      </div>
-    </div>
-    <div className='slider'>
-      <div className='control'>
-        <div className='btn left' onClick={e => controlClickHandle(false)}>
-          <IconArrowLeft width="77" height="77"/>
-        </div>
-        <div className='btn right' onClick={e => controlClickHandle(true)}>
-          <IconArrowRight width="77" height="77"/>
+      <div className="top">
+        <div className="close-btn" onClick={closeBtnClickHandle}>
+          <IconPictureClose />
         </div>
       </div>
-      <div className='picture'>
-        <SwitchTransition mode='in-out'>
-          <CSSTransition
-            key={pictureUrls[currentIndex]}
-            classNames="pic"
-            timeout={200}
-          >
-            <img src={pictureUrls[currentIndex]} alt="" />
-          </CSSTransition>
-        </SwitchTransition>
+      <div className="slider">
+        <div className="control">
+          <div className="btn left" onClick={() => controlClickHandle(false)}>
+            <IconArrowLeft width="77" height="77" />
+          </div>
+          <div className="btn right" onClick={() => controlClickHandle(true)}>
+            <IconArrowRight width="77" height="77" />
+          </div>
+        </div>
+        <div className="picture">
+          <SwitchTransition mode="in-out">
+            <CSSTransition
+              key={pictureUrls[currentIndex]}
+              classNames="pic"
+              timeout={200}
+            >
+              <img src={pictureUrls[currentIndex]} alt="" />
+            </CSSTransition>
+          </SwitchTransition>
+        </div>
       </div>
-    </div>
-    <div className='preview'>
-        <div className='info'>
-          <div className='desc'>
-            <div className='count'>
-              <span>{currentIndex+1}/{pictureUrls.length}:</span>
-              <span>room apartment图片{currentIndex+1}</span>
+      <div className="preview">
+        <div className="info">
+          <div className="desc">
+            <div className="count">
+              <span>
+                {currentIndex + 1}/{pictureUrls.length}:
+              </span>
+              <span>room apartment图片{currentIndex + 1}</span>
             </div>
-            <div className='toggle' onClick={e => setShowList(!showList)}>
-              <span>{showList ? "隐藏": "显示"}照片列表</span>
-              { showList? <IconArrowDown/>: <IconArrowUp/> }
+            <div className="toggle" onClick={() => setShowList(!showList)}>
+              <span>{showList ? '隐藏' : '显示'}照片列表</span>
+              {showList ? <IconArrowDown /> : <IconArrowUp />}
             </div>
           </div>
-          <div className='list'>
+          <div className="list">
             <Indicator selectIndex={currentIndex}>
-              {
-                pictureUrls.map((item, index) => {
-                  return (
-                    <div 
-                      className={classNames("item", { active: currentIndex === index })}
-                      key={item}
-                      onClick={e => bottomItemClickHandle(index)}
-                    >
-                      <img src={item} alt="" />
-                    </div>
-                  )
-                })
-              }
+              {pictureUrls.map((item, index) => {
+                return (
+                  <div
+                    className={classNames('item', {
+                      active: currentIndex === index
+                    })}
+                    key={item}
+                    onClick={() => bottomItemClickHandle(index)}
+                  >
+                    <img src={item} alt="" />
+                  </div>
+                )
+              })}
             </Indicator>
           </div>
         </div>
       </div>
-  </BrowserWrapper>
+    </BrowserWrapper>
   )
 })
 
 PictureBrowser.propTypes = {
   pictureUrls: PropTypes.array,
   closeClick: PropTypes.func,
-  isNext: PropTypes.bool, // 添加 isNext 到 propTypes
+  isNext: PropTypes.bool // 添加 isNext 到 propTypes
 }
 
 export default PictureBrowser

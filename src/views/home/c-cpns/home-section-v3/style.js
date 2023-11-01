@@ -1,4 +1,3 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-export const SectionV3Wrapper = styled.div`
-`
+export const SectionV3Wrapper = styled.div``

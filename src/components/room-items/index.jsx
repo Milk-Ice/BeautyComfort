@@ -8,7 +8,7 @@ import IconArrowRight from '@/assets/css/svg/icon_ArrowRight'
 import Indicator from '@/base-ui/indicator'
 import classNames from 'classnames'
 const RoomItem = memo((props) => {
-  const { itemData, itemwidth = "25%", itemClick } = props
+  const { itemData, itemwidth = '25%', itemClick } = props
   const [selectIndex, setSelectIndex] = useState(0)
   // console.log(itemData)
   const silderRef = useRef()
@@ -17,10 +17,10 @@ const RoomItem = memo((props) => {
     // console.log(123)
     isRight ? silderRef.current.next() : silderRef.current.prev()
 
-    let newIndex = isRight? selectIndex + 1: selectIndex -1
+    let newIndex = isRight ? selectIndex + 1 : selectIndex - 1
     const length = itemData.picture_urls.length
-    if(newIndex < 0) newIndex = length -1
-    if(newIndex > length - 1) newIndex = 1
+    if (newIndex < 0) newIndex = length - 1
+    if (newIndex > length - 1) newIndex = 1
     setSelectIndex(newIndex)
 
     event.stopPropagation()
@@ -31,70 +31,73 @@ const RoomItem = memo((props) => {
   }
   // 普通展示图片元素
   const pictureElement = (
-    <div className='cover'>
+    <div className="cover">
       <img src={itemData.picture_url} alt="" />
     </div>
   )
   // 轮播图元素
   const sliderElement = (
-    <div className='slider' >
-      <div className='control'>
-        <div className='btn left' onClick={e => controlClickHandle(false, e)}>
+    <div className="slider">
+      <div className="control">
+        <div className="btn left" onClick={(e) => controlClickHandle(false, e)}>
           <IconArrowLeft width="30" height="30" fill="#fff" />
         </div>
-        <div className='btn right' onClick={e => controlClickHandle(true, e)}>
+        <div className="btn right" onClick={(e) => controlClickHandle(true, e)}>
           <IconArrowRight width="30" height="30" fill="#fff" />
         </div>
       </div>
       <div className="indicator">
         <Indicator selectIndex={selectIndex}>
-          {
-            itemData?.picture_urls?.map((item, index) => {
-              return (
-                <div className="item" key={item}>
-                  <span className={classNames("dot", {active: selectIndex === index})}></span>
-                </div>
-              )
-            })
-          }
+          {itemData?.picture_urls?.map((item, index) => {
+            return (
+              <div className="item" key={item}>
+                <span
+                  className={classNames('dot', {
+                    active: selectIndex === index
+                  })}
+                ></span>
+              </div>
+            )
+          })}
         </Indicator>
       </div>
       <Carousel dots={false} ref={silderRef}>
-        {
-          itemData?.picture_urls?.map(item => {
-            return (
-              <div className='cover' key={item}>
-                <img src={item} alt='' />
-              </div>
-            )
-          })
-        }
+        {itemData?.picture_urls?.map((item) => {
+          return (
+            <div className="cover" key={item}>
+              <img src={item} alt="" />
+            </div>
+          )
+        })}
       </Carousel>
     </div>
   )
   return (
     <ItemWrapper itemwidth={itemwidth} onClick={itemClickHandle}>
-      <div className='inner'>
+      <div className="inner">
         {/* 根据是否有轮播图数组列表展示 */}
         {!itemData.picture_urls ? pictureElement : sliderElement}
         {/* 描述 */}
-        <div className='desc'>{itemData.verify_info.message?.join(' · ')}</div>
-        <div className='name'>{itemData.name}</div>
-        <div className='price'>￥ {itemData.price}/晚</div>
+        <div className="desc">{itemData.verify_info.message?.join(' · ')}</div>
+        <div className="name">{itemData.name}</div>
+        <div className="price">￥ {itemData.price}/晚</div>
         {/* 评分 */}
-        <Rating name="read-only"
+        <Rating
+          name="read-only"
           value={itemData.star_rating ?? 5}
           precision={0.1}
           readOnly
-          sx={{ fontSize: '12px', color: 'orange' }} />
-
+          sx={{ fontSize: '12px', color: 'orange' }}
+        />
       </div>
     </ItemWrapper>
   )
 })
 
 RoomItem.propTypes = {
-  itemData: PropTypes.object
+  itemData: PropTypes.object,
+  itemwidth: PropTypes.string,
+  itemClick: PropTypes.func
 }
 
 export default RoomItem

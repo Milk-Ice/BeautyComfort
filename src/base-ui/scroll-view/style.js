@@ -1,19 +1,19 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const ViewWrapper = styled.div`
-    position: relative;
-    padding: 8px 0;
+  position: relative;
+  padding: 8px 0;
 
-.scroll{
+  .scroll {
     overflow: hidden;
 
-    .scroll-content{
-        display: flex;
-        transition: transform 200ms ease; 
+    .scroll-content {
+      display: flex;
+      transition: transform 200ms ease;
     }
-}
+  }
 
-.control{
+  .control {
     position: absolute;
     z-index: 9;
     display: flex;
@@ -27,20 +27,18 @@ export const ViewWrapper = styled.div`
     border-radius: 50%;
     border-color: #fff;
     background: #fff;
-    box-shadow: 0px 1px 1px 1px rgba(0,0,0,.14);
+    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.14);
     cursor: pointer;
 
     &.left {
-        left: 0;
-        top: 50%;
-        transform: translate(-50%, -50%);
+      left: 0;
+      top: 50%;
+      transform: translate(-50%, -50%);
     }
     &.right {
-        right: 0;
-        top: 50%;
-        transform: translate(-50%, -50%);
+      right: 0;
+      top: 50%;
+      transform: translate(-50%, -50%);
     }
-
-}
-    
-    `
+  }
+`

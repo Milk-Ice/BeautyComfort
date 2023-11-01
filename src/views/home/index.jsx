@@ -1,4 +1,4 @@
-import React, { memo, useEffect} from 'react'
+import React, { memo, useEffect } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
 import { fetchHomeAction } from '@/store/modules/home'
@@ -12,37 +12,55 @@ import HomeSectionV3 from './c-cpns/home-section-v3'
 import { changeHeaderConfigAction } from '@/store/modules/main'
 const Home = memo(() => {
   // 取数据
-  const { goodPriceInfo, highScoreInfo, discountInfo, hotRecommendInfo, longforInfo, plusInfo} = useSelector((state) => ({
-    goodPriceInfo: state.home.goodPriceInfo,
-    highScoreInfo: state.home.highScoreInfo,
-    discountInfo: state.home.discountInfo,
-    hotRecommendInfo: state.home.hotRecommendInfo,
-    longforInfo: state.home.longforInfo,
-    plusInfo: state.home.plusInfo
-  }),shallowEqual)
+  const {
+    goodPriceInfo,
+    highScoreInfo,
+    discountInfo,
+    hotRecommendInfo,
+    longforInfo,
+    plusInfo
+  } = useSelector(
+    (state) => ({
+      goodPriceInfo: state.home.goodPriceInfo,
+      highScoreInfo: state.home.highScoreInfo,
+      discountInfo: state.home.discountInfo,
+      hotRecommendInfo: state.home.hotRecommendInfo,
+      longforInfo: state.home.longforInfo,
+      plusInfo: state.home.plusInfo
+    }),
+    shallowEqual
+  )
 
   // 派发异步事件
   const dispatch = useDispatch()
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(fetchHomeAction())
-    dispatch(changeHeaderConfigAction({ isFixed: true}))
-  },[dispatch])
+    dispatch(changeHeaderConfigAction({ isFixed: true }))
+  }, [dispatch])
 
   return (
     <HomeWrapper>
       <HomeBanner />
-        <div className='content'>
-         {isEmptyObject(discountInfo) &&  <HomeSectionV2 infoData={ discountInfo } />}
-         {isEmptyObject(hotRecommendInfo) &&  <HomeSectionV2 infoData={ hotRecommendInfo } />}
+      <div className="content">
+        {isEmptyObject(discountInfo) && (
+          <HomeSectionV2 infoData={discountInfo} />
+        )}
+        {isEmptyObject(hotRecommendInfo) && (
+          <HomeSectionV2 infoData={hotRecommendInfo} />
+        )}
 
-          {isEmptyObject(longforInfo) && <HomelongFor infoData={ longforInfo } />}
+        {isEmptyObject(longforInfo) && <HomelongFor infoData={longforInfo} />}
 
-         {isEmptyObject(goodPriceInfo) && <HomeSectionV1 infoData={ goodPriceInfo } />}
-         {isEmptyObject(highScoreInfo) && <HomeSectionV1 infoData={ highScoreInfo } />}
+        {isEmptyObject(goodPriceInfo) && (
+          <HomeSectionV1 infoData={goodPriceInfo} />
+        )}
+        {isEmptyObject(highScoreInfo) && (
+          <HomeSectionV1 infoData={highScoreInfo} />
+        )}
 
-         {/* plus */}
-         {isEmptyObject(plusInfo) && <HomeSectionV3 infoData={plusInfo} />}
-        </div>
+        {/* plus */}
+        {isEmptyObject(plusInfo) && <HomeSectionV3 infoData={plusInfo} />}
+      </div>
     </HomeWrapper>
   )
 })

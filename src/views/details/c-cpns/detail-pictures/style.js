@@ -1,13 +1,11 @@
-import styled from "styled-components";
-
+import styled from 'styled-components'
 
 export const PicturesWrapper = styled.div`
-position: relative;
+  position: relative;
   > .pictures {
     display: flex;
     height: 600px;
     background-color: #000;
-
 
     &:hover {
       .cover {
@@ -22,7 +20,8 @@ position: relative;
     }
   }
 
-  .left, .right {
+  .left,
+  .right {
     width: 50%;
     height: 100%;
 
@@ -46,11 +45,11 @@ position: relative;
         right: 0;
         top: 0;
         bottom: 0;
-        background-color: rgba(0,0,0,.3);
+        background-color: rgba(0, 0, 0, 0.3);
         opacity: 0;
         transition: opacity 200ms ease;
       }
-      
+
       &:hover {
         img {
           transform: scale(1.08);
@@ -70,7 +69,7 @@ position: relative;
       border: 1px solid #000;
     }
   }
-  .show-btn{
+  .show-btn {
     position: absolute;
     z-index: 999;
     right: 15px;
@@ -80,6 +79,5 @@ position: relative;
     border-radius: 4px;
     background-color: #fff;
     cursor: pointer;
-}
-
+  }
 `

@@ -3,39 +3,37 @@ import React, { memo, useEffect, useRef } from 'react'
 import { IndicatorWrapper } from './style'
 
 const Indicator = memo((props) => {
-    const { selectIndex } = props
-    const contentRef = useRef()
-    useEffect(()=>{
-        const selectItemE1 = contentRef.current.children[selectIndex]
-        const itemLeft = selectItemE1?.offsetLeft
-        const itemWidth = selectIndex?.clientWidth
+  const { selectIndex } = props
+  const contentRef = useRef()
+  useEffect(() => {
+    const selectItemE1 = contentRef.current.children[selectIndex]
+    const itemLeft = selectItemE1?.offsetLeft
+    const itemWidth = selectIndex?.clientWidth
 
-        let contentWidth = contentRef.current.clientWidth
-        const contentScroll = contentRef.current.scrollWidth
+    let contentWidth = contentRef.current.clientWidth
+    const contentScroll = contentRef.current.scrollWidth
 
-        let distance = itemLeft + itemWidth * 0.5 - contentWidth * 0.5
+    let distance = itemLeft + itemWidth * 0.5 - contentWidth * 0.5
 
-        
-        if(distance < 0) distance = 0
+    if (distance < 0) distance = 0
 
-        const totalDistance = contentScroll - contentWidth
-        if(distance > totalDistance ) distance = totalDistance
+    const totalDistance = contentScroll - contentWidth
+    if (distance > totalDistance) distance = totalDistance
 
-        contentRef.current.style.transform = `translate(${-distance}px)`
-    })
+    contentRef.current.style.transform = `translate(${-distance}px)`
+  })
   return (
     <IndicatorWrapper>
-        <div className="i-content" ref={contentRef} >
-            {
-                props.children
-            }
-        </div>
+      <div className="i-content" ref={contentRef}>
+        {props.children}
+      </div>
     </IndicatorWrapper>
   )
 })
 
 Indicator.propTypes = {
-    selectIndex: PropTypes.number
+  selectIndex: PropTypes.number,
+  children: PropTypes.node // 添加 children 的 PropTypes 验证
 }
 
 export default Indicator

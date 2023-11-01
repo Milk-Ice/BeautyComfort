@@ -5,17 +5,17 @@ import IconGobal from '@/assets/css/svg/icon_gobal'
 import IconMore from '@/assets/css/svg/icon_more'
 
 const HeaderRight = memo(() => {
-  const [ showPanel, setShowPanel ] = useState(false)
+  const [showPanel, setShowPanel] = useState(false)
 
-  useEffect(()=> {
+  useEffect(() => {
     function windowHandleClick() {
       setShowPanel(false)
     }
-    window.addEventListener("click",windowHandleClick, true)
+    window.addEventListener('click', windowHandleClick, true)
     return () => {
-      window.removeEventListener("click",windowHandleClick,true)
+      window.removeEventListener('click', windowHandleClick, true)
     }
-  },[])
+  }, [])
 
   function profileClickHandle() {
     setShowPanel(true)
@@ -23,33 +23,31 @@ const HeaderRight = memo(() => {
 
   return (
     <HeaderRightWrapper>
-      <div className='right'>
-        <div className='btns'>
-          <span className='item login'>登录</span>
-          <span className='item register'>注册</span>
+      <div className="right">
+        <div className="btns">
+          <span className="item login">登录</span>
+          <span className="item register">注册</span>
           <IconGobal />
         </div>
-        <div className='profile' onClick={profileClickHandle}>
-         <IconMore />
-         <IconAvatar />
-       
-        { showPanel && (
-          <div className='panel'>
-          <div className='top'>
-            <div className='item'>注册</div>
-            <div className='item'>登陆</div>
-          </div>
-          <div className='bottom'>
-            <div className='item'>出租房源</div>
-            <div className='item'>开展体验</div>
-            <div className='item'>帮助</div>
-          </div>
-        </div> 
-        )
-      }
+        <div className="profile" onClick={profileClickHandle}>
+          <IconMore />
+          <IconAvatar />
+
+          {showPanel && (
+            <div className="panel">
+              <div className="top">
+                <div className="item">注册</div>
+                <div className="item">登陆</div>
+              </div>
+              <div className="bottom">
+                <div className="item">出租房源</div>
+                <div className="item">开展体验</div>
+                <div className="item">帮助</div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
-      
     </HeaderRightWrapper>
   )
 })

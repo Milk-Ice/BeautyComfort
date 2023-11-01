@@ -1,5 +1,4 @@
-import styled from "styled-components";
-
+import styled from 'styled-components'
 
 export const TabsWrapper = styled.div`
   .item {
@@ -11,7 +10,7 @@ export const TabsWrapper = styled.div`
     border-radius: 3px;
     font-size: 17px;
     text-align: center;
-    border: 0.5px solid #D8D8D8;
+    border: 0.5px solid #d8d8d8;
     white-space: nowrap;
     cursor: pointer;
 
@@ -21,7 +20,7 @@ export const TabsWrapper = styled.div`
 
     &.active {
       color: #fff;
-      background-color: ${props => props.theme.color.secondaryColor};
+      background-color: ${(props) => props.theme.color.secondaryColor};
     }
   }
 `

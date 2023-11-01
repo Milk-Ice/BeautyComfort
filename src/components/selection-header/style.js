@@ -1,9 +1,8 @@
-import styled from "styled-components";
-
+import styled from 'styled-components'
 
 export const HeaderWraper = styled.div`
   color: #222;
-  
+
   .title {
     font-size: 22px;
     font-weight: 700;

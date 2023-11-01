@@ -6,19 +6,18 @@ import SectionRooms from '@/components/section-rooms'
 import SectionFooter from '@/components/section-footer'
 
 const HomeSectionV1 = memo((props) => {
-    
-    const { infoData } = props
-        return (
-        <SectionV1Wrapper>
-            <SectionHeader title={infoData.title} subtitle={infoData.subtitle} />
-            <SectionRooms roomList={infoData.list} itemWidth="25%"/>
-            <SectionFooter />
-        </SectionV1Wrapper>
-        )
+  const { infoData } = props
+  return (
+    <SectionV1Wrapper>
+      <SectionHeader title={infoData.title} subtitle={infoData.subtitle} />
+      <SectionRooms roomList={infoData.list} itemWidth="25%" />
+      <SectionFooter />
+    </SectionV1Wrapper>
+  )
 })
 
 HomeSectionV1.propTypes = {
-    infoData: PropTypes.object
+  infoData: PropTypes.object
 }
 
 export default HomeSectionV1

@@ -14,26 +14,25 @@ const SearchTabs = memo((props) => {
 
   return (
     <TabsWrapper>
-      {
-        titles?.map((item, index) => {
-          return (
-            <div
-              className={classNames("item", { active: currentIndex === index })}
-              key={item}
-              onClick={e => itemClickHandle(index)}
-            >
-              <span className='text'>{item}</span>
-              <span className='bottom'></span>
-            </div>
-          )
-        })
-      }
+      {titles?.map((item, index) => {
+        return (
+          <div
+            className={classNames('item', { active: currentIndex === index })}
+            key={item}
+            onClick={() => itemClickHandle(index)}
+          >
+            <span className="text">{item}</span>
+            <span className="bottom"></span>
+          </div>
+        )
+      })}
     </TabsWrapper>
   )
 })
 
 SearchTabs.propTypes = {
-  titles: PropTypes.array
+  titles: PropTypes.array,
+  tabClick: PropTypes.func
 }
 
 export default SearchTabs

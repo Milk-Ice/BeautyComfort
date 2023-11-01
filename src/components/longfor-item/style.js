@@ -1,10 +1,9 @@
-import styled from "styled-components";
-
+import styled from 'styled-components'
 
 export const ItemWrapper = styled.div`
   flex-shrink: 0;
   width: 20%;
-  
+
   .inner {
     padding: 8px;
 
@@ -25,7 +24,11 @@ export const ItemWrapper = styled.div`
     right: 0;
     bottom: 0;
     height: 60%;
-    background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0) 3%, rgb(0, 0, 0) 100%)
+    background-image: linear-gradient(
+      -180deg,
+      rgba(0, 0, 0, 0) 3%,
+      rgb(0, 0, 0) 100%
+    );
   }
 
   .info {

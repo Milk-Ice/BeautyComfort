@@ -12,10 +12,8 @@ const Details = memo(() => {
   }, [dispatch])
   return (
     <DetailWrapper>
-
       <DetailPicture />
       <DetaiInfos />
-
     </DetailWrapper>
   )
 })

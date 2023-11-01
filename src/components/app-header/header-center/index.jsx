@@ -1,10 +1,10 @@
 import React, { memo, useState } from 'react'
 import { HeaderCenterWrapper } from './style'
-import SearchTitles from "@/assets/data/search_titles"
+import SearchTitles from '@/assets/data/search_titles'
 import SearchTabs from './c-cpns/search-tabs'
 import SearchSections from './c-cpns/search-sections'
 const HeaderCenter = memo((props) => {
-  const titles = SearchTitles?.map(item => item.title)
+  const titles = SearchTitles?.map((item) => item.title)
   const { searchBarClick } = props
   // console.log(SearchTitles.title)
   const [tabIndex, setTabIndex] = useState()
@@ -27,5 +27,7 @@ const HeaderCenter = memo((props) => {
     </HeaderCenterWrapper>
   )
 })
-
+HeaderCenter.propTypes = {
+  searchBarClick: PropTypes.func
+}
 export default HeaderCenter

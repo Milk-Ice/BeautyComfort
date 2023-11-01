@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 export const HeaderCenterWrapper = styled.div`
-.search-bar{
+  .search-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -11,22 +11,21 @@ export const HeaderCenterWrapper = styled.div`
     border-radius: 24px;
     cursor: pointer;
 
-    ${props => props.theme.mixins.boxShadow}
-    .text{
-        padding: 0 16px;
-        font-weight: bold;
+    ${(props) => props.theme.mixins.boxShadow}
+    .text {
+      padding: 0 16px;
+      font-weight: bold;
     }
-}
-.search-details{
+  }
+  .search-details {
     position: relative;
     transform-origin: 50%;
     will-change: transform, opacity;
     .infos {
-        position: absolute;
-        top: 80px;
-        left: 50%;
-        transform: translateX(-50%);
+      position: absolute;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
     }
-}
-    
+  }
 `

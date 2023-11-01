@@ -1,10 +1,9 @@
-import styled from "styled-components";
-
+import styled from 'styled-components'
 
 export const ItemWrapper = styled.div`
   flex-shrink: 0;
   box-sizing: border-box;
-  width: ${props => props.itemwidth};
+  width: ${(props) => props.itemwidth};
   padding: 8px;
 
   .inner {
@@ -37,10 +36,18 @@ export const ItemWrapper = styled.div`
         align-items: center;
         width: 83px;
         height: 100%;
-        background: linear-gradient(to left, transparent 0%, rgba(0, 0, 0, 0.25) 100%);
+        background: linear-gradient(
+          to left,
+          transparent 0%,
+          rgba(0, 0, 0, 0.25) 100%
+        );
 
         &.right {
-          background: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.25) 100%);
+          background: linear-gradient(
+            to right,
+            transparent 0%,
+            rgba(0, 0, 0, 0.25) 100%
+          );
         }
       }
     }
@@ -53,7 +60,7 @@ export const ItemWrapper = styled.div`
       width: 30%;
       margin: 0 auto;
 
-      .item{
+      .item {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -73,10 +80,8 @@ export const ItemWrapper = styled.div`
         }
       }
     }
-
   }
-   
-      
+
   .cover {
     position: relative;
     box-sizing: border-box;
@@ -98,17 +103,17 @@ export const ItemWrapper = styled.div`
     margin: 10px 0 5px;
     font-size: 12px;
     font-weight: 700;
-    color: ${props => props.verifyColor};
+    color: ${(props) => props.verifyColor};
   }
 
   .name {
     font-size: 16px;
     font-weight: 700;
 
-    overflow: hidden;  
-    text-overflow: ellipsis; 
-    display: -webkit-box; 
-    -webkit-line-clamp: 2; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }
 
@@ -121,7 +126,7 @@ export const ItemWrapper = styled.div`
     align-items: center;
     font-size: 12px;
     font-weight: 600;
-    color: ${props => props.theme.text.primaryColor};
+    color: ${(props) => props.theme.text.primaryColor};
 
     .count {
       margin: 0 2px 0 4px;

@@ -1,32 +1,32 @@
-import MYrequest from "..";
+import MYrequest from '..'
 
 export function getHomeGoodPriceData() {
-    return MYrequest.get({
-        url: "/home/goodprice"
-    })
+  return MYrequest.get({
+    url: '/home/goodprice'
+  })
 }
 export function getHomeHighScoreData() {
-    return MYrequest.get({
-        url: "/home/highscore"
-    })
+  return MYrequest.get({
+    url: '/home/highscore'
+  })
 }
 export function getHomeDiscountData() {
-    return MYrequest.get({
-        url: "/home/discount"
-    })
+  return MYrequest.get({
+    url: '/home/discount'
+  })
 }
 export function getHomeHotRecommandData() {
-    return MYrequest.get({
-        url: "/home/hotrecommenddest"
-    })
+  return MYrequest.get({
+    url: '/home/hotrecommenddest'
+  })
 }
 export function getHomeLongforData() {
-    return MYrequest.get({
-        url: "/home/longfor"
-    })
+  return MYrequest.get({
+    url: '/home/longfor'
+  })
 }
 export function getHomePlusData() {
-    return MYrequest.get({
-        url: "/home/plus"
-    })
+  return MYrequest.get({
+    url: '/home/plus'
+  })
 }
